@@ -1,6 +1,7 @@
 package pers.caijx.thread.t2;
 
 /**
+ * 使用继承thread类的方式
  * Created by Administrator on 2018/9/8/008.
  */
 public class Demo1 extends Thread {
