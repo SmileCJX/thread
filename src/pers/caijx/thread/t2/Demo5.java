@@ -4,6 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * 使用定时器
  * Created by caijx on 2018/9/9/009.
  */
 public class Demo5 {
