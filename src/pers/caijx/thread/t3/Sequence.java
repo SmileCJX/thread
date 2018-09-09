@@ -22,6 +22,7 @@ public class Sequence {
      * @return
      */
     public int method() {
+        // monitorenter
         synchronized (this) {
             if (value > 0) {
                 return value;
@@ -29,6 +30,7 @@ public class Sequence {
                 return -1;
             }
         }
+        //monitorexit
     }
 
     /**
