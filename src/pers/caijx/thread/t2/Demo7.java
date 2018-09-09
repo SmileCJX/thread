@@ -16,6 +16,15 @@ public class Demo7 {
     }
 
     public int add(List<Integer> values) {
-        return values.parallelStream().mapToInt(a -> a).sum();
+        //普通流，顺序执行
+        System.out.println("普通流：");
+        values.stream().forEach(System.out::println);
+        //并行流
+        System.out.println("并行流：");
+        values.parallelStream().forEach(System.out::println);
+        //并行流，但按照顺序排序
+        System.out.println("并行流，按照原始顺序排序");
+        values.parallelStream().forEachOrdered(System.out::println);
+        return values.parallelStream().mapToInt(a -> a * 2).sum();
     }
 }
