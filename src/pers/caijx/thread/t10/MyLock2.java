@@ -5,17 +5,22 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- * 不可重入锁，不推荐
+ * 可重入锁
  * Created by caijx on 2018/9/11/011.
  */
-public class MyLock implements Lock{
+public class MyLock2 implements Lock{
 
     private boolean isLocked = false;
 
+    private Thread lockBy = null;
+
+    private int lockCount = 0;
+
     @Override
     public synchronized void lock() {
+        Thread currentThread = Thread.currentThread(); // Thread-0
         // while模拟自旋，if不能保证安全性
-        while (isLocked) {
+        while (isLocked && currentThread != lockBy) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -23,12 +28,19 @@ public class MyLock implements Lock{
             }
         }
         isLocked = true;
+        lockBy = currentThread;
+        lockCount++; // 1 2
     }
 
     @Override
     public synchronized void unlock() {
-        isLocked = false;
-        notify();
+        if (lockBy == Thread.currentThread()) {
+            lockCount--; // 1 0
+            if (lockCount == 0) {
+                isLocked = false;
+                notify();
+            }
+        }
     }
 
     @Override
