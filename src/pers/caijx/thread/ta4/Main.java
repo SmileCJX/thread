@@ -21,40 +21,26 @@ public class Main {
         }
     }
 
+    public void a() {
+        lock.lock();
+        System.out.println("a");
+        b();
+        lock.unlock();
+    }
+
+    public void b() {
+        lock.lock();
+        System.out.println("b");
+        lock.unlock();
+    }
+
     public static void main(String[] args) {
         Main m = new Main();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (true) {
-                    System.out.println(Thread.currentThread().getId() + " " + m.next());
-                }
-            }
-        }).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    System.out.println(Thread.currentThread().getId() + " " + m.next());
-                }
-            }
-        }).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    System.out.println(Thread.currentThread().getId() + " " + m.next());
-                }
-            }
-        }).start();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    System.out.println(Thread.currentThread().getId() + " " + m.next());
+                if (true) {
+                    m.a();
                 }
             }
         }).start();
