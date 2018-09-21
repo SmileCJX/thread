@@ -1,4 +1,4 @@
-package pers.caijx.thread.t10;
+package pers.caijx.thread.ta1;
 
 /**
  * 自定义锁

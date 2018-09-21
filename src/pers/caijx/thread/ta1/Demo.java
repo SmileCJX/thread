@@ -1,4 +1,4 @@
-package pers.caijx.thread.t10;
+package pers.caijx.thread.ta1;
 
 /**
  * 可重入锁
