@@ -5,6 +5,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 使用await和signal重写生产者消费者案例
  * Created by caijx on 2018/9/23/023.
  */
 public class Tmall2 {
