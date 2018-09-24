@@ -32,6 +32,7 @@ public class MyDataSource2 {
 
     static {
         try {
+            //加载数据库驱动包，动态加载类
             Class.forName(DRIVER_CLASS);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -41,7 +42,7 @@ public class MyDataSource2 {
     public MyDataSource2() {
         for (int i = 0; i < INIT_CONNECTIONS; i++) {
             try {
-                Connection conn = DriverManager.getConnection(URL,PASSWORD,URL);
+                Connection conn = DriverManager.getConnection(USER,PASSWORD,URL);
                 pool.add(conn);
             } catch (SQLException e) {
                 e.printStackTrace();
